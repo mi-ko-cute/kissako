@@ -2,10 +2,85 @@
 /*PC・タブレット・スマホ共通設定
 ------------------------------------------------------------------------------------------------------------------------------------------------------*/
 
+/*サイト説明文
+---------------------------------------------------------------------------*/
+
+#description {
+    color: #e6afcf;
+    font-size: 25px;
+}
+
+/*現在地検索及び住所検索共通の設定
+---------------------------------------------------------------------------*/
+
+.input_adjust {
+    text-align: center;
+    font-size: 50px;
+    line-height: 50px;
+}
+
+input[type=radio] {
+    width: 50px;
+    height: 50px;
+}
+
+.button {
+    display: inline-block;
+    border-radius: 50%;
+    /* 角丸       */
+    font-size: 26pt;
+    /* 文字サイズ */
+    text-align: center;
+    /* 文字位置   */
+    cursor: pointer;
+    /* カーソル   */
+    padding: 20px 20px;
+    /* 余白       */
+    background: #00007f;
+    /* 背景色     */
+    color: #ffffff;
+    /* 文字色     */
+    line-height: 1em;
+    /* 1行の高さ  */
+    transition: .3s;
+    /* なめらか変化 */
+    box-shadow: 4px 4px 3px #666666;
+    /* 影の設定 */
+    border: 2px solid #00007f;
+    /* 枠の指定 */
+}
+
+.button:hover {
+    box-shadow: none;
+    /* カーソル時の影消去 */
+    color: #00007f;
+    /* 背景色     */
+    background: #ffffff;
+    /* 文字色     */
+}
+
 /*現在地検索の設定
 ---------------------------------------------------------------------------*/
 
-#radio_button input [type="radio"] {
-    width: 300px;
-    height: 200px;
+#radius_select {
+    font-size: 20px;
+    border: 2px;
+    width: 100px;
+    height: 50px;
 }
+
+#current_location {
+    border-left: 3px dotted #56a764;
+    border-bottom: 3px dotted #56a764;
+    border-right: 3px dotted #56a764;
+    border-radius: 35px;
+    margin-bottom: 30px;
+}
+
+#radioButton {
+    display: inline-block;
+}
+
+/*住所検索の設定
+---------------------------------------------------------------------------*/
+

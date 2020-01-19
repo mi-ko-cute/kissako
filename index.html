@@ -5,9 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>きっさこ！</title>
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="近くの空いている喫茶店を調べよう！">
     <meta name="keywords" content="喫茶店,カフェ,珈琲,紅茶,混雑,空いている,GoogleMap,現在地検索,住所検索,距離範囲検索">
+
+    <!-- font Awesome -->
+    <script src="https://kit.fontawesome.com/746ec6d541.js" crossorigin="anonymous"></script>
+    <!-- css -->
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/index_style.css">
     <!--[if lt IE 9]>
@@ -20,6 +25,7 @@
 
     <header>
         <h1 id="logo"><a href="index.html"><img src="images\logo.png" alt="きっさこ！"></a></h1>
+        <p id="description"><i class="fas fa-coffee"></i>近くの空いているカフェを調べよう</p>
         <nav id="menubar">
             <ul>
                 <li><a href="#search">検索へGo！</a></li>
@@ -29,23 +35,46 @@
     <div class="contents" id="search">
 
         <section id="current_location" class="serach">
+            <h2>現在地検索</h2>
             <form>
-                <p id="radio_button"><input type="radio">現在地から検索する</p>
-                <p id="radius_range">半径
-                    <select name="radius">
+                <p class="input_adjust">
+                    <label class="input_text" for="radio">
+                        <span id="radioButton"><input id="radio" type="radio" name="check_radio" value="current">現在地から検索する</span>
+                    </label>
+                </p>
+                <p class="input_adjust">半径
+                    <select id="radius_select" name="radius">
                         <option value="500m">500m</option>
                         <option value="1km">1km</option>
                         <option value="3km">3km</option>
                         <option value="5km">5km</option>
                         <option value="10km">10km</option>
                     </select> 以内
+                    <input type="submit" value="検索開始！" class="button">
                 </p>
             </form>
         </section>
 
         <section id="Adress" class="search">
+            <h2>住所検索</h2>
+            <form>
+                <p class="input_adjust">
+                    <label class="input_text" for="radio">
+                        <span id="radioButton"><input id="radio" type="radio" name="check_radio" value="adress">住所から検索する</span>
+                    </label>
+                </p>
+                <p class="input_adjust">半径
+                    <select id="radius_select" name="radius">
+                        <option value="500m">500m</option>
+                        <option value="1km">1km</option>
+                        <option value="3km">3km</option>
+                        <option value="5km">5km</option>
+                        <option value="10km">10km</option>
+                    </select> 以内
+                    <input type="submit" value="検索開始！" class="button">
+                </p>
+            </form>
         </section>
-
         <p class="pagetop"><a href="#">↑</a></p>
 
     </div>
