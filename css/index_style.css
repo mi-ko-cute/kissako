@@ -13,6 +13,10 @@
 /*現在地検索及び住所検索共通の設定
 ---------------------------------------------------------------------------*/
 
+.serachArea_wrapper {
+    padding-bottom: 20px;
+}
+
 .input_adjust {
     text-align: center;
     font-size: 50px;
@@ -59,28 +63,98 @@ input[type=radio] {
     /* 文字色     */
 }
 
-/*現在地検索の設定
----------------------------------------------------------------------------*/
-
-#radius_select {
-    font-size: 20px;
-    border: 2px;
-    width: 100px;
-    height: 50px;
-}
-
-#current_location {
+.search {
     border-left: 3px dotted #56a764;
     border-bottom: 3px dotted #56a764;
     border-right: 3px dotted #56a764;
     border-radius: 35px;
     margin-bottom: 30px;
+    text-align: center;
 }
 
-#radioButton {
+.radioButton_text {
     display: inline-block;
 }
 
+.radius_select {
+    font-size: 30px;
+    border: 2px;
+    width: 100px;
+    height: 50px;
+}
+
+input[type=search] {
+    height: 40px;
+    margin: 20px 0;
+    font-size: 30px;
+}
+
+#expand-btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 5px 11px;
+    background-color: #ff7;
+    border: 1px solid;
+    border-radius: 3px;
+    width: 60%;
+    font-size:40px;
+}
+
+#expand-btn:hover {
+    cursor: pointer;
+}
+
+/*現在地検索の設定
+---------------------------------------------------------------------------*/
+
+#current_location_check {
+    display: none;
+}
+
+#current_location_serch_area {
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.8s;
+}
+
+#current_location_check:checked ~ #current_location_serch_area {
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
+}
+
+
 /*住所検索の設定
 ---------------------------------------------------------------------------*/
+
+#AddressSerach_check {
+    display: none;
+}
+
+#adress_search_area {
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.8s;
+}
+
+#expand-btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 5px 11px;
+    background-color: #ff7;
+    border: 1px solid;
+    border-radius: 3px;
+    width: 60%;
+    font-size:40px;
+}
+
+#AddressSerach_check:checked ~ #adress_search_area {
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
+}
 
