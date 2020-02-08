@@ -21,51 +21,44 @@
 </head>
 
 <body>
-
-    <header>
-        <h1 id="logo"><a href="index.html"><img src="..\images\logo.png" alt="きっさこ！"></a></h1>
-        <p id="description"><i class="fas fa-coffee"></i>近くの空いているカフェを調べよう</p>
-    </header>
-
-    <div class="contents" id="search">
-
-        <section id="MapArea">
-            <h2>マップ検索結果</h2>
-            <div id="Map_SearchResult_wrapper">
-            </div>
-        </section>
-
-        <section id="tableArea">
-            <h2>表検索結果</h2>
-            <div id="Table_SerachResult_wrapper">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>店情報</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>店の名前と写真</td>
-                            <td>店の情報(住所,ホームページ等)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-        <p class="pagetop"><a href="#">↑</a></p>
-
+    <div id="map_wrapper">
+        <div id="gmap"></div>
     </div>
-    <!--/contents-->
 
-    <footer>
-        <small>Copyright&copy; <a href="index.html">きっさこ！</a> All Rights Reserved.</small>
-        <span class="pr">《<a href="http://template-party.com/" target="_blank">Web Design:Template-Party</a>》</span>
-    </footer>
+    <!-- 地図の情報を記述する領域 display: none で非表示に -->
+    <div id="map_params">
+        <p id="lat">35.681167</p>
+        <p id="lng">139.767052</p>
+        <p id="zoom">16</p>
+        <p id="tooltip">Hello from Map!</p>
+    </div>
 
-    <!--背景用の画像の読み込み-->
-    <aside id="bg"><img src="../images/bg.jpg" class="landscape"><img src="../images/bg2.jpg" class="portrait"></aside>
+    <div id="iw_wrapper">
+        <ol id="infowindw">
+            <li>Info Window</li>
+            <li>Open</li>
+            <li>Close</li>
+        </ol>
+    </div>
 
+    <div id="shopinfo_table">
+        <table>
+            <thead>
+                <tr>
+                    <th id="shopName">店名</th>
+                    <th id="businessHours">営業時間</th>
+                    <th id="phoneNumber">電話番号</th>
+                    <th id="homePage">ホームページ</th>
+                    <th id="crowd">混み具合</th>
+                </tr>
+            </thead>
+            <tbody id="shoplist">
+
+            </tbody>
+        </table>
+    </div>
+
+    <script type="text/javascript" src="../js/map.js"></script>
 </body>
 
 </html>
