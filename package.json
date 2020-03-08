@@ -1,0 +1,24 @@
+{
+  "name": "kissako",
+  "version": "1.0.0",
+  "description": "きっさこ！\r ====",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mi-ko-cute/kissako.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mi-ko-cute/kissako/issues"
+  },
+  "homepage": "https://github.com/mi-ko-cute/kissako#readme",
+  "dependencies": {
+    "formidable": "^1.2.1",
+    "jquery": "^3.4.1"
+  }
+}

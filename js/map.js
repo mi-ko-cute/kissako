@@ -1,17 +1,17 @@
 let map;
-
-// htmlが読みこまれてからinitMapを実行
-window.onload = function () {
-    initMap();
-};
+let shopPlaceIDs = [];
 
 function initMap() {
+    // html要素を取得
     const target = document.getElementById('gmap');
-    const lat = parseFloat(document.getElementById('lat').textContent);
-    const lng = parseFloat(document.getElementById('lng').textContent);
+    const lat = 35.681167;
+    const lng = 139.767052;
     const center = new google.maps.LatLng(lat, lng);
-    const zoom = parseFloat(document.getElementById('zoom').textContent);
+    const zoom = 16;
     const shopList = document.getElementById('shoplist');
+
+    // 本日の曜日
+    const DAY_OF_WEEK = new Date().getDay() - 1;
 
     //マップを生成して表示
     map = new google.maps.Map(target, {
@@ -60,8 +60,12 @@ function initMap() {
                     };
                     service.getDetails(request, function (place, stauts) {
                         if (stauts === google.maps.places.PlacesServiceStatus.OK) {
+                            // jsonファイルを出力
+                            //fs.writeFile('./details.txt', place);
+
                             createMarker(place);
-                            createTableShopList(place);
+                            createTableShopList(place, i);
+                            shopPlaceIDs.add = place.place_id;
                         }
                     });
                 }
@@ -110,31 +114,51 @@ function initMap() {
         }
 
         // テーブル(ショップリスト)を作成する関数
-        function createTableShopList(shop) {
-
+        function createTableShopList(shop, i) {
             const tbodyTrDOM = document.createElement('tr');
             tbodyTrDOM.innerHTML = `<td>${shop.name}</td>`; // 店名
             // 営業時間
             if (shop.opening_hours === undefined) {
-                tbodyTrDOM.innerHTML += `<td></td>`;
+                tbodyTrDOM.innerHTML += `<td>-</td>`;
             } else {
-                tbodyTrDOM.innerHTML += `<td>${shop.opening_hours.weekday_text[0]}</td>`;
+                tbodyTrDOM.innerHTML += `<td>${shop.opening_hours.weekday_text[DAY_OF_WEEK]}</td>`;
             }
             // 電話番号
             if (shop.formatted_phone_number === undefined) {
-                tbodyTrDOM.innerHTML += `<td></td>`;
+                tbodyTrDOM.innerHTML += `<td>-</td>`;
             } else {
-                tbodyTrDOM.innerHTML += `<td>${shop.formatted_phone_number}</td>`;
+                tbodyTrDOM.innerHTML += `<td><a href="tel:${shop.formatted_phone_number}">${shop.formatted_phone_number}</a></td>`;
             }
             // WebSite
             if (shop.website === undefined) {
-                tbodyTrDOM.innerHTML += `<td></td>`;
+                tbodyTrDOM.innerHTML += `<td>-</td>`;
             } else {
-                tbodyTrDOM.innerHTML += `<td>${shop.website}</td>`;
+                tbodyTrDOM.innerHTML += `<td><a href="${shop.website}" target="_blank">${shop.website}</a></td>`;
             }
-            tbodyTrDOM.innerHTML += `<td>混んでいません</td>`;　// 混み具合（後で実装)
+            tbodyTrDOM.innerHTML += `<td id="crowd${i}">混んでいません</td>`;　// 混み具合（後で実装)
 
             shopList.appendChild(tbodyTrDOM);
         }
     });
 }
+
+function createCrowd() {
+    $.ajax({
+        type: "GET",
+        url: './populartimes/index.py',
+        data: JSON.stringify(shopPlaceIDs),  //object -> json
+        async: false,                    //true:非同期(デフォルト), false:同期
+        dataType: "json",
+        success: function (data) {
+            response = data;
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            console.log("リクエスト時になんらかのエラーが発生しました\n" + textStatus +":\n" + errorThrown);
+        }
+    });
+
+    //表示
+    // console.log(response);
+}
+
+createCrowd();
